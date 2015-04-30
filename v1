@@ -1,0 +1,63 @@
+var myPalette = buildUI(this);
+
+if (myPalette !=null && myPalette instanceof Window){
+       myPalette.show()
+    }
+
+function buildUI (thisObject){
+       
+        
+if (thisObject instanceof Panel){
+    var myWindow = thisObject;
+    }  else{
+    var myWindow = new Window ("palette", "My Window");
+    }
+    
+    myWindow.myPanel = myWindow.add("group");
+    myWindow.myPanel.orientation = "column";
+   
+    myWindow.myPanel.okButton1= myWindow.add("button");
+    myWindow.myPanel.okButton1.text=("Generate Folders!");
+    
+    myWindow.layout.layout(true);
+    //myWindow.layout.resize();
+   
+    
+    myWindow.margins = 10;
+    myWindow.spacing=10;
+  
+        
+//var newComp;
+//newComp = app.project.rootFolder.items.addComp("XXXX_v01", 1920, 1080, 1.0, 10.0, 29.97);    
+    
+myWindow.myPanel.okButton1.onClick = function (){
+    
+    
+var compFolder0 = app.project.items.addFolder('00_RENDER COMPS'); 
+//compFolder0.items.addComp("XXXX_v01", 1920, 1080, 1.0, 10.0, 29.97); 
+
+var compFolder0 = app.project.items.addFolder('01_WORKING COMPS'); 
+var compFolder0 = app.project.items.addFolder('02_PRECOMPS'); 
+
+//initiates QT folder group
+var compFolder = app.project.items.addFolder('03_QUICKTIME'); 
+var compFolder2= app.project.items.addFolder('FOOTAGE’);  //folder1
+var compFolder3= app.project.items.addFolder('PRE-RENDERS’);  //folder2
+compFolder2.parentFolder = compFolder;  //makes folder 2 child of folder1
+compFolder3.parentFolder = compFolder;  //makes folder 3 child of folder1
+
+var compFolder04 = app.project.items.addFolder('04_IMAGES'); 
+var compFolder05 = app.project.items.addFolder('05_VECTOR'); 
+var compFolder06 = app.project.items.addFolder('06_AUDIO'); 
+var compFolder07 = app.project.items.addFolder('07_AE IMPORT'); 
+var compFolder08 = app.project.items.addFolder('08_PREMIEREPRO IMPORT'); 
+var compFolder09 = app.project.items.addFolder('09_C4D/3D IMPORT'); 
+var compFolder10 = app.project.items.addFolder('10_REFERENCE'); 
+var compFolder11 = app.project.items.addFolder('11_WEB PREVIEWS'); 
+
+//alerts user on completion
+alert('Folders Generated!');
+}
+//win.center();
+//win.show();
+}
